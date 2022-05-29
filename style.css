@@ -1,0 +1,26 @@
+:root {
+	--main-bg-clr: #353535;
+	--main-text-clr: white;
+}
+
+body {
+	margin: 0;
+	top: 0;
+	padding: 0;
+
+	color: var(--main-text-clr);
+	background-color: var(--main-bg-clr);
+}
+
+#container {
+	width: 100vw;
+	height: 100vh;
+}
+
+.exchange__window__wrapper {
+	height: 50%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

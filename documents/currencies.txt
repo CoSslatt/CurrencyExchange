@@ -1,0 +1,7 @@
+dolar amerykanski USD
+euro EUR
+jen JPY
+kuna (chorwacja) HRK
+funt egipski EGP
+rubel białoruski BYN
+rubel rosyjski RUB
