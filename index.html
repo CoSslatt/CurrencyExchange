@@ -13,14 +13,40 @@
 		<div id="container">
 			<header class="exchange__window__wrapper">
 				<div class="exchange__window">
-					<span class="transparent__from__currency"
-						>1 USD to w przeliczeniu</span
-					>
+					<span class="transparent__from__currency">
+						1 USD to w przeliczeniu
+					</span>
 					<span class="transparent__to__currency">4.064 EUR</span>
-					<div id="inputs__wrrapper">
-						<input type="number" class="number__input__from__currency" />
-						<input type="number" class="number__input__to__currency" />
-					</div>
+					<section id="inputs__section">
+						<div id="inputs__wrapper">
+							<input type="number" />
+							<input type="number" />
+						</div>
+						<div id="labels__wrapper">
+							<label for="from__currency__label">
+								<select name="from__currency__label">
+									<option value="dolar amerykański">dolar amerykański</option>
+									<option value="euro">euro</option>
+									<option value="kuna chorwacka">kuna chorwacka</option>
+									<option value="jen">jen</option>
+									<option value="funt egipski">funt egipski</option>
+									<option value="rubel białoruski">rubel białoruski</option>
+									<option value="rubel rosyjski">rubel rosyjski</option>
+								</select>
+							</label>
+							<label for="to__currency__label">
+								<select name="to__currency__label">
+									<option value="dolar amerykański">dolar amerykański</option>
+									<option value="euro">euro</option>
+									<option value="kuna chorwacka">kuna chorwacka</option>
+									<option value="jen">jen</option>
+									<option value="funt egipski">funt egipski</option>
+									<option value="rubel białoruski">rubel białoruski</option>
+									<option value="rubel rosyjski">rubel rosyjski</option>
+								</select>
+							</label>
+						</div>
+					</section>
 				</div>
 			</header>
 		</div>
