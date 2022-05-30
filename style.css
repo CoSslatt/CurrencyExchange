@@ -6,6 +6,7 @@
 	--text-clr-for-options: black;
 	--inputs-border-clr: gray;
 	--box-shadow-clr: white;
+	--submit-bg-clr: white;
 }
 
 body {
@@ -110,4 +111,20 @@ label select {
 	color: var(--main-text-clr);
 	border: 1px solid var(--inputs-border-clr);
 	box-shadow: 0 0 2px var(--box-shadow-clr);
+}
+
+.submit {
+	width: 80px;
+	height: 25px;
+	margin-top: 50px;
+
+	font-size: 14px;
+	font-weight: 700;
+	font-style: italic;
+
+	background-color: var(--submit-bg-clr);
+}
+
+.submit:active {
+	opacity: 0.4;
 }

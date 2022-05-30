@@ -1,6 +1,34 @@
 const API_LINK = "http://api.nbp.pl/api/exchangerates/tables/";
 const PROPERLY_STATUS = 200;
+
+const availableCurrencies = [
+	"dolar amerykański",
+	"euro",
+	"jen",
+	"kuna chorwacka",
+	"funt egipski",
+	"rubel białoruski",
+	"rubel rosyjski",
+];
 const TABLES = ["A", "B"];
+
+const submit = document.querySelector(".submit");
+const firstCurrencyInput = document.querySelector(".from__currency__input");
+const secondCurrencyInput = document.querySelector(".to__currency__input");
+
+submit.addEventListener("submit", (e) => {
+	e.preventDefault();
+
+	searchForCurrency()
+		.then((data) => {
+			for (let i = 0; i < availableCurrencies.length; i++) {}
+		})
+		.catch((err) => {
+			console.log("Error: ", err.message);
+		});
+});
+
+function exchangeValues() {}
 
 const searchForCurrency = async () => {
 	for (let i = 0; i < TABLES.length; i++) {
@@ -12,17 +40,3 @@ const searchForCurrency = async () => {
 		return await response.json();
 	}
 };
-
-searchForCurrency()
-	.then((data) => {
-		for (let i = 0; i < data[0].rates.length; i++) {
-			if (data[0].rates[i].code === "USD") {
-				console.log(data[0].rates[i], "table: " + data[0].table);
-
-				break;
-			} else continue;
-		}
-	})
-	.catch((err) => {
-		console.log("Error: ", err.message);
-	});
