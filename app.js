@@ -34,6 +34,7 @@ function exchangeValues() {
 			console.log("Error: ", err.message);
 		});
 }
+//
 
 const searchForCurrency = async () => {
 	for (let i = 0; i < TABLES.length; i++) {
