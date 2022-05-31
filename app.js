@@ -1,16 +1,6 @@
-const API_LINK = "https://api.nbp.pl/api/exchangerates/tables/";
+const API_LINK =
+	"https://api.fastforex.io/fetch-all?from=PLN&api_key=3147b156d7-7a47dbe4e2-rcra4w";
 const PROPERLY_STATUS = 200;
-
-const availableCurrencies = [
-	"dolar amerykański",
-	"euro",
-	"funt egipski",
-	"jen",
-	"kuna chorwacka",
-	"rubel białoruski",
-	"rubel rosyjski",
-];
-const TABLES = ["A", "B"];
 
 const submit = document.querySelector(".submit");
 const selectForCurrencies = document.querySelector(".select__for__currencies");
@@ -24,34 +14,53 @@ submit.addEventListener("click", (e) => {
 });
 
 function exchangeValues() {
-	searchForCurrency()
+	getCurrencies()
 		.then((currency) => {
-			let convertedValue = firstCurrencyInput.value / currency.mid;
-			let desiredValue = convertedValue.toFixed(2);
+			let exchangeValue = firstCurrencyInput.value * currency;
+			let desiredValue = exchangeValue.toFixed(2);
 			secondCurrencyInput.value = desiredValue;
 		})
 		.catch((err) => {
-			console.log("Error: ", err.message);
+			console.log("ERROR: ", err.message);
 		});
 }
-//
 
-const searchForCurrency = async () => {
-	for (let i = 0; i < TABLES.length; i++) {
-		const response = await fetch(API_LINK + TABLES[i]);
+const getCurrencies = async () => {
+	const response = await fetch(API_LINK, {
+		method: "GET",
+	});
 
-		if (response.status !== PROPERLY_STATUS)
-			throw new Error("The file doesn't exist");
+	if (response.status !== 200) throw new Error("Couldn't fetch the data");
 
-		const data = await response.json();
-		console.log(data[0]);
+	const data = await response.json();
+	const results = Object.keys(data.results);
 
-		for (let i = 0; i < data[0].rates.length; i++) {
-			if (selectForCurrencies.value == data[0].rates[i].currency) {
-				currentCurrency = data[0].rates[i];
+	for (let i = 0; i < results.length; i++) {
+		if (results[i] === selectForCurrencies.value) {
+			currentCurrency = results[i];
 
-				return currentCurrency;
+			switch (currentCurrency) {
+				case "USD":
+					currentCurrency = data.results.USD;
+					break;
+				case "EUR":
+					currentCurrency = data.results.EUR;
+					break;
+				case "EGP":
+					currentCurrency = data.results.EGP;
+					break;
+				case "HRK":
+					currentCurrency = data.results.HRK;
+					break;
+				case "RUB":
+					currentCurrency = data.results.RUB;
+					break;
+				case "JPY":
+					currentCurrency = data.results.JPY;
+					break;
 			}
+
+			return currentCurrency;
 		}
 	}
 };
