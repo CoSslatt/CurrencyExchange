@@ -1,4 +1,4 @@
-const API_LINK = "http://api.nbp.pl/api/exchangerates/tables/";
+const API_LINK = "https://api.nbp.pl/api/exchangerates/tables/";
 const PROPERLY_STATUS = 200;
 
 const availableCurrencies = [
