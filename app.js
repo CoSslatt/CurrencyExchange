@@ -4,9 +4,9 @@ const PROPERLY_STATUS = 200;
 const availableCurrencies = [
 	"dolar amerykański",
 	"euro",
+	"funt egipski",
 	"jen",
 	"kuna chorwacka",
-	"funt egipski",
 	"rubel białoruski",
 	"rubel rosyjski",
 ];
@@ -24,9 +24,15 @@ submit.addEventListener("click", (e) => {
 });
 
 function exchangeValues() {
-	searchForCurrency().catch((err) => {
-		console.log("Error: ", err.message);
-	});
+	searchForCurrency()
+		.then((currency) => {
+			let convertedValue = firstCurrencyInput.value / currency.mid;
+			let desiredValue = convertedValue.toFixed(2);
+			secondCurrencyInput.value = desiredValue;
+		})
+		.catch((err) => {
+			console.log("Error: ", err.message);
+		});
 }
 
 const searchForCurrency = async () => {
@@ -37,13 +43,13 @@ const searchForCurrency = async () => {
 			throw new Error("The file doesn't exist");
 
 		const data = await response.json();
+		console.log(data[0]);
 
 		for (let i = 0; i < data[0].rates.length; i++) {
 			if (selectForCurrencies.value == data[0].rates[i].currency) {
 				currentCurrency = data[0].rates[i];
-				console.log(currentCurrency);
 
-				break;
+				return currentCurrency;
 			}
 		}
 	}
