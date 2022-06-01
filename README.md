@@ -2,7 +2,7 @@
 
 ---
 
-#### Currency exchange from only from PLN to other, the data is loading from an api
+#### Currency exchange only from PLN to other, the data is loading from an api
 
 ---
 
