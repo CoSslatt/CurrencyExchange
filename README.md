@@ -23,4 +23,4 @@
 
 ---
 
-https://narcikss.github.io/CurrencyExchange/
+https://cosslatt.github.io/CurrencyExchange/
